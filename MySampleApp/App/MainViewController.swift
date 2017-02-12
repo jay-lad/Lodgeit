@@ -14,14 +14,20 @@
 import UIKit
 import AWSMobileHubHelper
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDelegate {
     
+    @IBOutlet weak var tblConversationList: UITableView!
 //    var demoFeatures: [DemoFeature] = []
     var signInObserver: AnyObject!
     var signOutObserver: AnyObject!
     var willEnterForegroundObserver: AnyObject!
     
+    let userNames: [String] = ["John", "Katie", "Jade", "Taylar"]
+    let userLastMessage: [String] = ["Hi, How are you?", "What's up!", "Thank you", "See you tomorrow", "Have a great day"]
+    let cellReuseIdentifier = "cell"
+    
     // MARK: - View lifecycle
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +44,7 @@ class MainViewController: UIViewController {
             signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
                         guard let strongSelf = self else { return }
                         print("Sign In Observer observed sign in.")
+                
                         strongSelf.setupRightBarButtonItem()
                         // You need to call `updateTheme` here in case the sign-in happens after `- viewWillAppear:` is called.
                         strongSelf.updateTheme()
@@ -96,6 +103,9 @@ class MainViewController: UIViewController {
                 self.view.backgroundColor = themeSettings.theme.backgroundColor.UIColorFromARGB()
                 self.navigationController!.navigationBar.tintColor = titleTextColor
                 self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: titleTextColor]
+                self.tblConversationList.delegate = self
+//                self.tblConversationList.dataSource = self
+                self.tblConversationList.reloadData()
             })
         }
     }
@@ -114,7 +124,39 @@ class MainViewController: UIViewController {
             assert(false)
         }
     }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return self.userNames.count
+//    }
+//    
+//    // create a cell for each table view row
+//    func tableView(tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
+//        
+//        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! ConversatinLIstTableViewCell
+//        
+//        cell.lblUserName?.text = self.userNames[indexPath.row]
+////        cell.detailTextLabel?.text = self.userLastMessage[indexPath.row]
+//        
+//        return cell
+//    }
+//    
+//    // method to run when table view cell is tapped
+//    func tableView(tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+//        print("You tapped cell number \(indexPath.row).")
+//    }
+
+    
+    @IBAction func btnNextClick(sender: AnyObject) {
+        
+    }
+    
 }
+
+
 
 class FeatureDescriptionViewController: UIViewController {
     override func viewDidLoad() {

@@ -1,12 +1,18 @@
 PODS:
   - IQKeyboardManagerSwift (4.0.5)
+  - JSQMessagesViewController (7.3.4):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift (= 4.0.5)
+  - JSQMessagesViewController
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 41fd3a45a2cdb2a0e031af697708a95b865068a1
+  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
 
-PODFILE CHECKSUM: c808c76304d459e53dc61fe38c07bf81c6033ea7
+PODFILE CHECKSUM: 7890240246d03951a6ea4ce4c61b016cb1a87431
 
-COCOAPODS: 1.2.0.rc.1
+COCOAPODS: 1.2.0

@@ -8,7 +8,8 @@ target 'MySampleApp' do
 	# IQKeyboardManager allows you to prevent issues of the keyboard sliding up and cover UITextField/UITextView without needing you to enter any code and no additional setup required
 
 	pod 'IQKeyboardManagerSwift', '4.0.5'
-
+    pod 'JSQMessagesViewController'
+    
   # Pods for MySampleApp
 
 end
