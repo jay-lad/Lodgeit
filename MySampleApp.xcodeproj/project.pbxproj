@@ -70,8 +70,7 @@
 		E7A30F04FB46E94D00000000 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29BD9DC17600000000 /* SafariServices.framework */; };
 		E7A30F04FCB97E2000000000 /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E298BCF655600000000 /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7A30F04FCB97E2000000001 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E298BCF655600000000 /* AWSAPIGateway.framework */; };
-		EA7662E11E50AA6200448624 /* ConversatinLIstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7662E01E50AA6200448624 /* ConversatinLIstTableViewCell.swift */; };
-		EA7662E31E50BF5F00448624 /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7662E21E50BF5F00448624 /* ThreadVC.swift */; };
+		EA43DFCE1E50EB61009368CB /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43DFCD1E50EB61009368CB /* ThreadVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -160,8 +159,7 @@
 		4C94A693D628B5DAE6178632 /* Pods-MySampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BBBC2B37F5837BB5EEE7CDD4 /* Pods-MySampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		D45C4645ABDA958D094AE59C /* Pods_MySampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA7662E01E50AA6200448624 /* ConversatinLIstTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversatinLIstTableViewCell.swift; path = ../../../../../../../Jay/Project/Dots/DotsMessanger/DotsMessanger/Entities/LLSimpleCamera/Utilities/ConversatinLIstTableViewCell.swift; sourceTree = "<group>"; };
-		EA7662E21E50BF5F00448624 /* ThreadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadVC.swift; path = ../../../../../../../Jay/Project/Dots/DotsMessanger/DotsMessanger/Entities/LLSimpleCamera/Utilities/ThreadVC.swift; sourceTree = "<group>"; };
+		EA43DFCD1E50EB61009368CB /* ThreadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadVC.swift; path = MySampleApp/App/ThreadVC.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,8 +302,7 @@
 				1DD70E29875A96D000000000 /* Launch Screen.storyboard */,
 				1DD70E29DE84F7FC00000000 /* Main.storyboard */,
 				1DD70E290576E76E00000000 /* MainViewController.swift */,
-				EA7662E21E50BF5F00448624 /* ThreadVC.swift */,
-				EA7662E01E50AA6200448624 /* ConversatinLIstTableViewCell.swift */,
+				EA43DFCD1E50EB61009368CB /* ThreadVC.swift */,
 				4A975FAF1E4E26F10057B6C9 /* view */,
 				B401C979E10EA15800000000 /* SignIn */,
 				B401C979DBC2394000000000 /* SupportingFiles */,
@@ -602,8 +599,6 @@
 				E7A30F04D3080A0800000000 /* UserPoolMFAViewController.swift in Sources */,
 				E7A30F048FB889AC00000000 /* AppDelegate.swift in Sources */,
 				E7A30F044781FB0400000000 /* UserDataStorageViewController.swift in Sources */,
-				EA7662E11E50AA6200448624 /* ConversatinLIstTableViewCell.swift in Sources */,
-				EA7662E31E50BF5F00448624 /* ThreadVC.swift in Sources */,
 				E7A30F04BD91715400000000 /* UserPoolForgotPasswordViewController.swift in Sources */,
 				E7A30F041A20A18A00000000 /* DemoFeature.swift in Sources */,
 				4A975FB51E4E2CB20057B6C9 /* ThemeLabel.swift in Sources */,
@@ -622,6 +617,7 @@
 				E7A30F040E0C90C400000000 /* AWSConfiguration.swift in Sources */,
 				E7A30F04F42B147B00000000 /* SignInViewControllerExtensions.swift in Sources */,
 				E7A30F04FA25F5D000000000 /* CloudLogicAPIListViewController.swift in Sources */,
+				EA43DFCE1E50EB61009368CB /* ThreadVC.swift in Sources */,
 				E7A30F04CBE4A61900000000 /* AWSAPI_SQOF6EIKKL_RequestSchema.m in Sources */,
 				4A975FB71E4E2ED70057B6C9 /* ThemeTextfield.swift in Sources */,
 				E7A30F04A58B60F200000000 /* APIPathSelectorViewController.swift in Sources */,

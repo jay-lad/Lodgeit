@@ -18,6 +18,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tblConversationList: UITableView!
 //    var demoFeatures: [DemoFeature] = []
+    //dshf sdfkhsfj hds fhskdf
     var signInObserver: AnyObject!
     var signOutObserver: AnyObject!
     var willEnterForegroundObserver: AnyObject!
