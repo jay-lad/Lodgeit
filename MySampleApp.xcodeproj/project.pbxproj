@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A195E5A1E5AB245009F443E /* ACSACSApisClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E531E5AB245009F443E /* ACSACSApisClient.swift */; };
+		4A195E5B1E5AB245009F443E /* ACSChannelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E541E5AB245009F443E /* ACSChannelRequest.swift */; };
+		4A195E5C1E5AB245009F443E /* ACSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E551E5AB245009F443E /* ACSResponse.swift */; };
+		4A195E5D1E5AB245009F443E /* ACSTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E561E5AB245009F443E /* ACSTokenRequest.swift */; };
+		4A195E5E1E5AB245009F443E /* ACSTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E571E5AB245009F443E /* ACSTokenResponse.swift */; };
+		4A195E5F1E5AB245009F443E /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E591E5AB245009F443E /* Empty.swift */; };
 		4A975FB11E4E270D0057B6C9 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A975FB01E4E270D0057B6C9 /* ThemeButton.swift */; };
 		4A975FB31E4E27AA0057B6C9 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A975FB21E4E27AA0057B6C9 /* AppConstant.swift */; };
 		4A975FB51E4E2CB20057B6C9 /* ThemeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A975FB41E4E2CB20057B6C9 /* ThemeLabel.swift */; };
@@ -16,8 +22,6 @@
 		E7A30F04144EF62100000000 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29D5A60C1100000000 /* SignInViewController.swift */; };
 		E7A30F0414E7AADF00000000 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E2998B7353C00000000 /* MediaPlayer.framework */; };
 		E7A30F041A20A18A00000000 /* DemoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29F6A1F35A00000000 /* DemoFeature.swift */; };
-		E7A30F041BD28D7E00000000 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E298389D68A00000000 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E7A30F041BD28D7E00000001 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E298389D68A00000000 /* AWSS3.framework */; };
 		E7A30F041C2B2B3000000000 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29BF1DB89C00000000 /* Foundation.framework */; };
 		E7A30F042276A00400000000 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD70E29DE84F7FC00000000 /* Main.storyboard */; };
 		E7A30F0422FA69D800000000 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29C05F468100000000 /* libsqlite3.tbd */; };
@@ -25,8 +29,6 @@
 		E7A30F042610FF3600000000 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E290978511200000000 /* UIKit.framework */; };
 		E7A30F042CE45E1200000000 /* ContentDelivery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD70E29A163E3F000000000 /* ContentDelivery.storyboard */; };
 		E7A30F04328DA07700000000 /* UserFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E295B401E2F00000000 /* UserFilesViewController.swift */; };
-		E7A30F043836A5ED00000000 /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29FA5DEC7C00000000 /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E7A30F043836A5ED00000001 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29FA5DEC7C00000000 /* AWSCore.framework */; };
 		E7A30F043B745E2E00000000 /* UserIdentity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD70E299554626000000000 /* UserIdentity.storyboard */; };
 		E7A30F0441525A4F00000000 /* UserPools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD70E29EDF07D8200000000 /* UserPools.storyboard */; };
 		E7A30F04417D4FA400000000 /* CloudLogicAPIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E2912FF575C00000000 /* CloudLogicAPIFactory.swift */; };
@@ -48,8 +50,6 @@
 		E7A30F04A8FD6D9F00000000 /* AWSAPI_SQOF6EIKKL_GetTwilioTokenMobileHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E295A40DB3F00000000 /* AWSAPI_SQOF6EIKKL_GetTwilioTokenMobileHubClient.m */; };
 		E7A30F04AC39043500000000 /* AWSAPI_SQOF6EIKKL_ResponseSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29061727A700000000 /* AWSAPI_SQOF6EIKKL_ResponseSchema.m */; };
 		E7A30F04AD3E7A6C00000000 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29EB92EABF00000000 /* UserSettingsViewController.swift */; };
-		E7A30F04B8FFE5DB00000000 /* AWSCognito.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29CD3A034800000000 /* AWSCognito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E7A30F04B8FFE5DB00000001 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29CD3A034800000000 /* AWSCognito.framework */; };
 		E7A30F04BADCDA6C00000000 /* UserPoolSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29CEC119FE00000000 /* UserPoolSignUpViewController.swift */; };
 		E7A30F04BD91715400000000 /* UserPoolForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E298F05879200000000 /* UserPoolForgotPasswordViewController.swift */; };
 		E7A30F04CABA5ACD00000000 /* UserIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E295D0EED8A00000000 /* UserIdentityViewController.swift */; };
@@ -58,8 +58,6 @@
 		E7A30F04CF645A6C00000000 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD70E29C8327FF900000000 /* SignIn.storyboard */; };
 		E7A30F04D3080A0800000000 /* UserPoolMFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29E4BA440E00000000 /* UserPoolMFAViewController.swift */; };
 		E7A30F04D3B2AD4A00000000 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E290576E76E00000000 /* MainViewController.swift */; };
-		E7A30F04D62E3E9000000000 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29B84B583C00000000 /* AWSCognitoIdentityProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E7A30F04D62E3E9000000001 /* AWSCognitoIdentityProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29B84B583C00000000 /* AWSCognitoIdentityProvider.framework */; };
 		E7A30F04E176D33200000000 /* CloudLogicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29180324A000000000 /* CloudLogicAPI.swift */; };
 		E7A30F04E2F2C8A100000000 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DD70E29875A96D000000000 /* Launch Screen.storyboard */; };
 		E7A30F04E7B6E4B400000000 /* ColorThemeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E293AF9D4AB00000000 /* ColorThemeSettings.swift */; };
@@ -68,8 +66,6 @@
 		E7A30F04F9715B3B00000000 /* UserPoolNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E29610ACD9800000000 /* UserPoolNewPasswordViewController.swift */; };
 		E7A30F04FA25F5D000000000 /* CloudLogicAPIListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E2922B8A55200000000 /* CloudLogicAPIListViewController.swift */; };
 		E7A30F04FB46E94D00000000 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29BD9DC17600000000 /* SafariServices.framework */; };
-		E7A30F04FCB97E2000000000 /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E298BCF655600000000 /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E7A30F04FCB97E2000000001 /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E298BCF655600000000 /* AWSAPIGateway.framework */; };
 		EA43DFCE1E50EB61009368CB /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43DFCD1E50EB61009368CB /* ThreadVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,11 +76,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E7A30F04D62E3E9000000000 /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
-				E7A30F043836A5ED00000000 /* AWSCore.framework in Embed Frameworks */,
-				E7A30F04FCB97E2000000000 /* AWSAPIGateway.framework in Embed Frameworks */,
-				E7A30F04B8FFE5DB00000000 /* AWSCognito.framework in Embed Frameworks */,
-				E7A30F041BD28D7E00000000 /* AWSS3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,11 +112,9 @@
 		1DD70E297AA0158B00000000 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1DD70E297E4D9AA400000000 /* MySampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = MySampleApp.entitlements; path = MySampleApp/MySampleApp.entitlements; sourceTree = SOURCE_ROOT; };
 		1DD70E297F356D0B00000000 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UtilityFunctions.swift; path = MySampleApp/App/Utility/UtilityFunctions.swift; sourceTree = SOURCE_ROOT; };
-		1DD70E298389D68A00000000 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = MySampleApp/Sdk/Aws/AWSS3.framework; sourceTree = "<group>"; };
 		1DD70E29875A96D000000000 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "MySampleApp/App/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 		1DD70E298B0545C800000000 /* AWSConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AWSConfiguration.swift; path = MySampleApp/AmazonAws/AWSConfiguration.swift; sourceTree = SOURCE_ROOT; };
 		1DD70E298B305AFD00000000 /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSMobileHubHelper.framework; path = MySampleApp/AmazonAws/AWSMobileHubHelper.framework; sourceTree = "<group>"; };
-		1DD70E298BCF655600000000 /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = MySampleApp/Sdk/Aws/AWSAPIGateway.framework; sourceTree = "<group>"; };
 		1DD70E298D05C58B00000000 /* UserSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = UserSettings.storyboard; path = MySampleApp/Demo/UserSettings/UserSettings.storyboard; sourceTree = SOURCE_ROOT; };
 		1DD70E298F05879200000000 /* UserPoolForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPoolForgotPasswordViewController.swift; path = MySampleApp/App/SignIn/UserPools/UserPoolForgotPasswordViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DD70E299554626000000000 /* UserIdentity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = UserIdentity.storyboard; path = MySampleApp/Demo/UserIdentity/UserIdentity.storyboard; sourceTree = SOURCE_ROOT; };
@@ -133,14 +122,12 @@
 		1DD70E29A061119800000000 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1DD70E29A163E3F000000000 /* ContentDelivery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ContentDelivery.storyboard; path = MySampleApp/Demo/ContentDelivery/ContentDelivery.storyboard; sourceTree = SOURCE_ROOT; };
 		1DD70E29B4CA041200000000 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1DD70E29B84B583C00000000 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = MySampleApp/Sdk/Aws/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
 		1DD70E29BD9DC17600000000 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		1DD70E29BF1DB89C00000000 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1DD70E29C05F468100000000 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		1DD70E29C1FA6F8200000000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MySampleApp/App/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		1DD70E29C33D7ABE00000000 /* CloudLogicAPIInvokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudLogicAPIInvokeViewController.swift; path = MySampleApp/Demo/CloudLogic/CloudLogicAPIInvokeViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DD70E29C8327FF900000000 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = MySampleApp/App/SignIn/SignIn.storyboard; sourceTree = SOURCE_ROOT; };
-		1DD70E29CD3A034800000000 /* AWSCognito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognito.framework; path = MySampleApp/Sdk/Aws/extras/AWSCognito.framework; sourceTree = "<group>"; };
 		1DD70E29CEC119FE00000000 /* UserPoolSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPoolSignUpViewController.swift; path = MySampleApp/App/SignIn/UserPools/UserPoolSignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DD70E29D2C2616400000000 /* UserPoolSignUpConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPoolSignUpConfirmationViewController.swift; path = MySampleApp/App/SignIn/UserPools/UserPoolSignUpConfirmationViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DD70E29D5A60C1100000000 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = MySampleApp/App/SignIn/SignInViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -151,7 +138,13 @@
 		1DD70E29F5E9175100000000 /* MySampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MySampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DD70E29F6A1F35A00000000 /* DemoFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DemoFeature.swift; path = MySampleApp/Demo/DemoFeature.swift; sourceTree = SOURCE_ROOT; };
 		1DD70E29F909089000000000 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		1DD70E29FA5DEC7C00000000 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = MySampleApp/Sdk/Aws/AWSCore.framework; sourceTree = "<group>"; };
+		4A195E531E5AB245009F443E /* ACSACSApisClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACSACSApisClient.swift; sourceTree = "<group>"; };
+		4A195E541E5AB245009F443E /* ACSChannelRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACSChannelRequest.swift; sourceTree = "<group>"; };
+		4A195E551E5AB245009F443E /* ACSResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACSResponse.swift; sourceTree = "<group>"; };
+		4A195E561E5AB245009F443E /* ACSTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACSTokenRequest.swift; sourceTree = "<group>"; };
+		4A195E571E5AB245009F443E /* ACSTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACSTokenResponse.swift; sourceTree = "<group>"; };
+		4A195E581E5AB245009F443E /* AWSApiGatewayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSApiGatewayBridge.h; sourceTree = "<group>"; };
+		4A195E591E5AB245009F443E /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		4A975FB01E4E270D0057B6C9 /* ThemeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		4A975FB21E4E27AA0057B6C9 /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstant.swift; path = MySampleApp/App/view/AppConstant.swift; sourceTree = SOURCE_ROOT; };
 		4A975FB41E4E2CB20057B6C9 /* ThemeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeLabel.swift; sourceTree = "<group>"; };
@@ -167,11 +160,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7A30F04D62E3E9000000001 /* AWSCognitoIdentityProvider.framework in Frameworks */,
-				E7A30F043836A5ED00000001 /* AWSCore.framework in Frameworks */,
-				E7A30F04FCB97E2000000001 /* AWSAPIGateway.framework in Frameworks */,
-				E7A30F04B8FFE5DB00000001 /* AWSCognito.framework in Frameworks */,
-				E7A30F041BD28D7E00000001 /* AWSS3.framework in Frameworks */,
 				E7A30F04A6A09B8B00000000 /* AWSMobileHubHelper.framework in Frameworks */,
 				E7A30F042610FF3600000000 /* UIKit.framework in Frameworks */,
 				E7A30F04249F559E00000000 /* SystemConfiguration.framework in Frameworks */,
@@ -189,6 +177,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A195E521E5AB245009F443E /* AWSAPIGateway */ = {
+			isa = PBXGroup;
+			children = (
+				4A195E531E5AB245009F443E /* ACSACSApisClient.swift */,
+				4A195E541E5AB245009F443E /* ACSChannelRequest.swift */,
+				4A195E551E5AB245009F443E /* ACSResponse.swift */,
+				4A195E561E5AB245009F443E /* ACSTokenRequest.swift */,
+				4A195E571E5AB245009F443E /* ACSTokenResponse.swift */,
+				4A195E581E5AB245009F443E /* AWSApiGatewayBridge.h */,
+				4A195E591E5AB245009F443E /* Empty.swift */,
+			);
+			name = AWSAPIGateway;
+			path = MySampleApp/AWSAPIGateway;
+			sourceTree = SOURCE_ROOT;
+		};
 		4A975FAF1E4E26F10057B6C9 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,12 +318,7 @@
 		B401C979BAE51A2B00000000 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1DD70E298BCF655600000000 /* AWSAPIGateway.framework */,
-				1DD70E29CD3A034800000000 /* AWSCognito.framework */,
-				1DD70E29B84B583C00000000 /* AWSCognitoIdentityProvider.framework */,
-				1DD70E29FA5DEC7C00000000 /* AWSCore.framework */,
 				1DD70E298B305AFD00000000 /* AWSMobileHubHelper.framework */,
-				1DD70E298389D68A00000000 /* AWSS3.framework */,
 				1DD70E29F909089000000000 /* CFNetwork.framework */,
 				1DD70E29BF1DB89C00000000 /* Foundation.framework */,
 				1DD70E2998B7353C00000000 /* MediaPlayer.framework */,
@@ -367,6 +365,7 @@
 		B401C979CB490CDC00000000 /* MySampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				4A195E521E5AB245009F443E /* AWSAPIGateway */,
 				B401C979DFBEC50C00000000 /* AmazonAws */,
 				B401C979B9FDE63C00000000 /* App */,
 				B401C97938A731B000000000 /* Demo */,
@@ -445,7 +444,6 @@
 				4F426D880000000000000000 /* Frameworks */,
 				8A032D2C0000000000000000 /* Resources */,
 				FAF5FAC90000000000000000 /* Embed Frameworks */,
-				E1F174220000000000000000 /* ShellScript */,
 				4FC22C0F5C5EBA2B78E38472 /* [CP] Embed Pods Frameworks */,
 				622249A3F7C4DA02BF2B5656 /* [CP] Copy Pods Resources */,
 			);
@@ -558,19 +556,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E1F174220000000000000000 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework/strip-frameworks.sh\"";
-		};
 		E1F174220000000000000001 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -591,8 +576,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A195E5E1E5AB245009F443E /* ACSTokenResponse.swift in Sources */,
 				E7A30F04F9715B3B00000000 /* UserPoolNewPasswordViewController.swift in Sources */,
 				E7A30F04F7F2560300000000 /* CloudLogicAPIInvokeViewController.swift in Sources */,
+				4A195E5D1E5AB245009F443E /* ACSTokenRequest.swift in Sources */,
 				E7A30F04328DA07700000000 /* UserFilesViewController.swift in Sources */,
 				E7A30F0445DA573100000000 /* UserPoolSignUpConfirmationViewController.swift in Sources */,
 				E7A30F04A8FD6D9F00000000 /* AWSAPI_SQOF6EIKKL_GetTwilioTokenMobileHubClient.m in Sources */,
@@ -606,6 +593,7 @@
 				E7A30F049FB494D300000000 /* UtilityFunctions.swift in Sources */,
 				E7A30F04D3B2AD4A00000000 /* MainViewController.swift in Sources */,
 				E7A30F04AC39043500000000 /* AWSAPI_SQOF6EIKKL_ResponseSchema.m in Sources */,
+				4A195E5B1E5AB245009F443E /* ACSChannelRequest.swift in Sources */,
 				E7A30F04E176D33200000000 /* CloudLogicAPI.swift in Sources */,
 				E7A30F04BADCDA6C00000000 /* UserPoolSignUpViewController.swift in Sources */,
 				E7A30F04613EE46D00000000 /* CloudLogicAPIOperationsViewController.swift in Sources */,
@@ -614,6 +602,7 @@
 				4A975FB31E4E27AA0057B6C9 /* AppConstant.swift in Sources */,
 				4A975FB11E4E270D0057B6C9 /* ThemeButton.swift in Sources */,
 				E7A30F04AD3E7A6C00000000 /* UserSettingsViewController.swift in Sources */,
+				4A195E5A1E5AB245009F443E /* ACSACSApisClient.swift in Sources */,
 				E7A30F040E0C90C400000000 /* AWSConfiguration.swift in Sources */,
 				E7A30F04F42B147B00000000 /* SignInViewControllerExtensions.swift in Sources */,
 				E7A30F04FA25F5D000000000 /* CloudLogicAPIListViewController.swift in Sources */,
@@ -621,7 +610,9 @@
 				E7A30F04CBE4A61900000000 /* AWSAPI_SQOF6EIKKL_RequestSchema.m in Sources */,
 				4A975FB71E4E2ED70057B6C9 /* ThemeTextfield.swift in Sources */,
 				E7A30F04A58B60F200000000 /* APIPathSelectorViewController.swift in Sources */,
+				4A195E5F1E5AB245009F443E /* Empty.swift in Sources */,
 				E7A30F04CABA5ACD00000000 /* UserIdentityViewController.swift in Sources */,
+				4A195E5C1E5AB245009F443E /* ACSResponse.swift in Sources */,
 				E7A30F0476C9DB5100000000 /* AWSMobileClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

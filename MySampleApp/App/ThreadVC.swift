@@ -8,6 +8,7 @@
 
 import UIKit
 import AWSMobileHubHelper
+import AWSAPIGateway
 
 class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -28,6 +29,7 @@ class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
+        AWSIdentityManager.defaultIdentityManager().identityId
         
         // You need to call `- updateTheme` here in case the sign-in happens before `- viewWillAppear:` is called.
         updateTheme()
@@ -54,6 +56,29 @@ class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             })
         
         setupRightBarButtonItem()
+        
+        let credentialProvider = AWSCognitoCredentialsProvider(regionType: AWSCognitoUserPoolRegion, identityPoolId: "us-east-1:7d68636d-14e4-4f46-92ea-31b5d1cd7946")
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+        
+        
+        let body = ACSTokenRequest()
+        body.userid = AWSIdentityManager.defaultIdentityManager().identityId
+        
+        let client = ACSACSApisClient.defaultClient()
+        
+        client.getTokenPost(body).continueWithBlock {(task: AWSTask) -> AnyObject? in
+            if let error = task.error {
+                print("Error occurred: \(error)")
+                return nil
+            }
+            
+            if let result = task.result {
+                // Do something with result
+                print(result)
+            }
+            return nil
+        }
     }
     
     deinit {
