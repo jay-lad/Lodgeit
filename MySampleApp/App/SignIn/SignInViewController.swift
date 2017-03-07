@@ -48,6 +48,14 @@ class SignInViewController: UIViewController {
                 queue: NSOperationQueue.mainQueue(),
                 usingBlock: {(note: NSNotification) -> Void in
                     // perform successful login actions here
+                    print(AWSIdentityManager.defaultIdentityManager().identityId)
+                    print(AWSIdentityManager.defaultIdentityManager().userName)
+                    print(AWSIdentityManager.defaultIdentityManager().imageURL)
+                    print(AWSIdentityManager.defaultIdentityManager().loggedIn)
+                    NSUserDefaults.standardUserDefaults().setObject(AWSIdentityManager.defaultIdentityManager().userName!, forKey: "username")
+                    NSUserDefaults.standardUserDefaults().setObject(AWSIdentityManager.defaultIdentityManager().identityId!, forKey: "identityId")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
             })
 
                 facebookButton.removeFromSuperview()

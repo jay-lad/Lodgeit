@@ -12,7 +12,7 @@ import AWSAPIGateway
 
 class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var tblConversationList: UITableView!
+    @IBOutlet weak var tblConversationsList: UITableView!
     //    var demoFeatures: [DemoFeature] = []
     //dshf sdfkhsfj hds fhskdf
     var signInObserver: AnyObject!
@@ -21,13 +21,14 @@ class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let userNames: [String] = ["John", "Katie", "Jade", "Taylar"]
     let userLastMessage: [String] = ["Hi, How are you?", "What's up!", "Thank you", "See you tomorrow", "Have a great day"]
-    let cellReuseIdentifier = "ThreadCell"
+    let cellReuseIdentifier = "conversationcell"
     
     // MARK: - View lifecycle
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tblConversationsList.registerClass(cellConversation.self, forCellReuseIdentifier: "conversationcell")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
         AWSIdentityManager.defaultIdentityManager().identityId
         
@@ -76,6 +77,8 @@ class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if let result = task.result {
                 // Do something with result
                 print(result)
+                
+                
             }
             return nil
         }
@@ -124,9 +127,9 @@ class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.view.backgroundColor = themeSettings.theme.backgroundColor.UIColorFromARGB()
                 self.navigationController!.navigationBar.tintColor = titleTextColor
                 self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: titleTextColor]
-                self.tblConversationList.delegate = self
-                self.tblConversationList.dataSource = self
-                self.tblConversationList.reloadData()
+                self.tblConversationsList.delegate = self
+                self.tblConversationsList.dataSource = self
+                self.tblConversationsList.reloadData()
             })
         }
     }
@@ -150,40 +153,42 @@ class ThreadVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return self.userNames.count
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! cellConversation
+//        
+//        cell.lblUsername?.text = "\(userNames[indexPath.row])"
+//        //        cell.detailTextLabel?.text = self.userLastMessage[indexPath.row]
+//        
+//        return cell
+//    }
+//    
+    
+        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return self.userNames.count
     }
+    
+    // create a cell for each table view row
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! ThreadCell
         
-        cell.lblUserName?.text = self.userNames[indexPath.row]
+        
+        let cell = tblConversationsList.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! cellConversation
+        
+        cell.lblUsername?.text = self.userNames[indexPath.row]
         //        cell.detailTextLabel?.text = self.userLastMessage[indexPath.row]
         
         return cell
-        
     }
     
-    //    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        return self.userNames.count
-    //    }
-    //
-    //    // create a cell for each table view row
-    //    func tableView(tableView: UITableView, cellForRowAt indexPath: NSIndexPath) -> UITableViewCell {
-    //
-    //        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! ConversatinLIstTableViewCell
-    //
-    //        cell.lblUserName?.text = self.userNames[indexPath.row]
-    ////        cell.detailTextLabel?.text = self.userLastMessage[indexPath.row]
-    //
-    //        return cell
-    //    }
-    //
-    //    // method to run when table view cell is tapped
-    //    func tableView(tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
-    //        print("You tapped cell number \(indexPath.row).")
-    //    }
+    // method to run when table view cell is tapped
+    func tableView(tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+        print("You tapped cell number \(indexPath.row).")
+    }
     
     
     @IBAction func btnNextClick(sender: AnyObject) {

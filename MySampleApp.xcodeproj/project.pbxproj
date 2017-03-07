@@ -13,6 +13,7 @@
 		4A195E5D1E5AB245009F443E /* ACSTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E561E5AB245009F443E /* ACSTokenRequest.swift */; };
 		4A195E5E1E5AB245009F443E /* ACSTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E571E5AB245009F443E /* ACSTokenResponse.swift */; };
 		4A195E5F1E5AB245009F443E /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A195E591E5AB245009F443E /* Empty.swift */; };
+		4A7EE9CF1E6E8BC600DEA7C8 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7EE9CE1E6E8BC600DEA7C8 /* Crypto.swift */; };
 		4A975FB11E4E270D0057B6C9 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A975FB01E4E270D0057B6C9 /* ThemeButton.swift */; };
 		4A975FB31E4E27AA0057B6C9 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A975FB21E4E27AA0057B6C9 /* AppConstant.swift */; };
 		4A975FB51E4E2CB20057B6C9 /* ThemeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A975FB41E4E2CB20057B6C9 /* ThemeLabel.swift */; };
@@ -67,6 +68,10 @@
 		E7A30F04FA25F5D000000000 /* CloudLogicAPIListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD70E2922B8A55200000000 /* CloudLogicAPIListViewController.swift */; };
 		E7A30F04FB46E94D00000000 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD70E29BD9DC17600000000 /* SafariServices.framework */; };
 		EA43DFCE1E50EB61009368CB /* ThreadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA43DFCD1E50EB61009368CB /* ThreadVC.swift */; };
+		EAE82FDF1E688DB000F24082 /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE82FDE1E688DB000F24082 /* MessageVC.swift */; };
+		EAE82FE11E688EFC00F24082 /* cellConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE82FE01E688EFC00F24082 /* cellConversation.swift */; };
+		EAE82FE31E68A58100F24082 /* SenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE82FE21E68A58100F24082 /* SenderCell.swift */; };
+		EAE82FE51E68A5A900F24082 /* receiverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE82FE41E68A5A900F24082 /* receiverCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -145,6 +150,7 @@
 		4A195E571E5AB245009F443E /* ACSTokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACSTokenResponse.swift; sourceTree = "<group>"; };
 		4A195E581E5AB245009F443E /* AWSApiGatewayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSApiGatewayBridge.h; sourceTree = "<group>"; };
 		4A195E591E5AB245009F443E /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		4A7EE9CE1E6E8BC600DEA7C8 /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crypto.swift; path = MySampleApp/App/SignIn/Crypto.swift; sourceTree = SOURCE_ROOT; };
 		4A975FB01E4E270D0057B6C9 /* ThemeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		4A975FB21E4E27AA0057B6C9 /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstant.swift; path = MySampleApp/App/view/AppConstant.swift; sourceTree = SOURCE_ROOT; };
 		4A975FB41E4E2CB20057B6C9 /* ThemeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeLabel.swift; sourceTree = "<group>"; };
@@ -153,6 +159,10 @@
 		BBBC2B37F5837BB5EEE7CDD4 /* Pods-MySampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		D45C4645ABDA958D094AE59C /* Pods_MySampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA43DFCD1E50EB61009368CB /* ThreadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThreadVC.swift; path = MySampleApp/App/ThreadVC.swift; sourceTree = SOURCE_ROOT; };
+		EAE82FDE1E688DB000F24082 /* MessageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = SOURCE_ROOT; };
+		EAE82FE01E688EFC00F24082 /* cellConversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellConversation.swift; sourceTree = SOURCE_ROOT; };
+		EAE82FE21E68A58100F24082 /* SenderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderCell.swift; sourceTree = SOURCE_ROOT; };
+		EAE82FE41E68A5A900F24082 /* receiverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = receiverCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,12 +310,16 @@
 			isa = PBXGroup;
 			children = (
 				1DD70E29C1FA6F8200000000 /* AppDelegate.swift */,
+				EAE82FE41E68A5A900F24082 /* receiverCell.swift */,
+				EAE82FE21E68A58100F24082 /* SenderCell.swift */,
 				4A975FB21E4E27AA0057B6C9 /* AppConstant.swift */,
 				1DD70E2903BA0D6000000000 /* Images.xcassets */,
 				1DD70E29875A96D000000000 /* Launch Screen.storyboard */,
 				1DD70E29DE84F7FC00000000 /* Main.storyboard */,
 				1DD70E290576E76E00000000 /* MainViewController.swift */,
 				EA43DFCD1E50EB61009368CB /* ThreadVC.swift */,
+				EAE82FDE1E688DB000F24082 /* MessageVC.swift */,
+				EAE82FE01E688EFC00F24082 /* cellConversation.swift */,
 				4A975FAF1E4E26F10057B6C9 /* view */,
 				B401C979E10EA15800000000 /* SignIn */,
 				B401C979DBC2394000000000 /* SupportingFiles */,
@@ -401,6 +415,7 @@
 			children = (
 				1DD70E29C8327FF900000000 /* SignIn.storyboard */,
 				1DD70E29D5A60C1100000000 /* SignInViewController.swift */,
+				4A7EE9CE1E6E8BC600DEA7C8 /* Crypto.swift */,
 				B401C979FD3E9B0F00000000 /* UserPools */,
 			);
 			name = SignIn;
@@ -466,7 +481,7 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					E66DC04E0000000000000000 = {
-						DevelopmentTeam = 7CJ7RFEYK2;
+						DevelopmentTeam = Q4A42KLWQ5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -580,6 +595,8 @@
 				E7A30F04F9715B3B00000000 /* UserPoolNewPasswordViewController.swift in Sources */,
 				E7A30F04F7F2560300000000 /* CloudLogicAPIInvokeViewController.swift in Sources */,
 				4A195E5D1E5AB245009F443E /* ACSTokenRequest.swift in Sources */,
+				4A7EE9CF1E6E8BC600DEA7C8 /* Crypto.swift in Sources */,
+				EAE82FDF1E688DB000F24082 /* MessageVC.swift in Sources */,
 				E7A30F04328DA07700000000 /* UserFilesViewController.swift in Sources */,
 				E7A30F0445DA573100000000 /* UserPoolSignUpConfirmationViewController.swift in Sources */,
 				E7A30F04A8FD6D9F00000000 /* AWSAPI_SQOF6EIKKL_GetTwilioTokenMobileHubClient.m in Sources */,
@@ -595,6 +612,7 @@
 				E7A30F04AC39043500000000 /* AWSAPI_SQOF6EIKKL_ResponseSchema.m in Sources */,
 				4A195E5B1E5AB245009F443E /* ACSChannelRequest.swift in Sources */,
 				E7A30F04E176D33200000000 /* CloudLogicAPI.swift in Sources */,
+				EAE82FE31E68A58100F24082 /* SenderCell.swift in Sources */,
 				E7A30F04BADCDA6C00000000 /* UserPoolSignUpViewController.swift in Sources */,
 				E7A30F04613EE46D00000000 /* CloudLogicAPIOperationsViewController.swift in Sources */,
 				E7A30F04144EF62100000000 /* SignInViewController.swift in Sources */,
@@ -608,9 +626,11 @@
 				E7A30F04FA25F5D000000000 /* CloudLogicAPIListViewController.swift in Sources */,
 				EA43DFCE1E50EB61009368CB /* ThreadVC.swift in Sources */,
 				E7A30F04CBE4A61900000000 /* AWSAPI_SQOF6EIKKL_RequestSchema.m in Sources */,
+				EAE82FE51E68A5A900F24082 /* receiverCell.swift in Sources */,
 				4A975FB71E4E2ED70057B6C9 /* ThemeTextfield.swift in Sources */,
 				E7A30F04A58B60F200000000 /* APIPathSelectorViewController.swift in Sources */,
 				4A195E5F1E5AB245009F443E /* Empty.swift in Sources */,
+				EAE82FE11E688EFC00F24082 /* cellConversation.swift in Sources */,
 				E7A30F04CABA5ACD00000000 /* UserIdentityViewController.swift in Sources */,
 				4A195E5C1E5AB245009F443E /* ACSResponse.swift in Sources */,
 				E7A30F0476C9DB5100000000 /* AWSMobileClient.swift in Sources */,
@@ -669,7 +689,7 @@
 				CODE_SIGN_ENTITLEMENTS = MySampleApp/MySampleApp.entitlements;
 				CODE_SIGN_IDENTITY = "iphone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7CJ7RFEYK2;
+				DEVELOPMENT_TEAM = Q4A42KLWQ5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -681,7 +701,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MySampleApp/App/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amazon.lodgeit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.lodgeit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -744,7 +764,7 @@
 				CODE_SIGN_ENTITLEMENTS = MySampleApp/MySampleApp.entitlements;
 				CODE_SIGN_IDENTITY = "iphone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7CJ7RFEYK2;
+				DEVELOPMENT_TEAM = Q4A42KLWQ5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -756,7 +776,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MySampleApp/App/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.amazon.lodgeit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrew.lodgeit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";

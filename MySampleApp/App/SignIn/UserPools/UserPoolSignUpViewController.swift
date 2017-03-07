@@ -71,13 +71,14 @@ class UserPoolSignUpViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let signUpConfirmationViewController = segue.destinationViewController as? UserPoolSignUpConfirmationViewController {
 //            signUpConfirmationViewController.sentTo = self.sentTo
-            signUpConfirmationViewController.user = self.pool?.getUser(self.txtUserName.text!)
+            signUpConfirmationViewController.user = self.pool?.getUser((self.txtEmail.text?.md5
+                )!)
         }
     }
     
     @IBAction func onSignUp(sender: AnyObject) {
 
-        guard let userNameValue = self.txtUserName.text where !userNameValue.isEmpty,
+        guard let userNameValue = txtEmail.text?.md5 where !userNameValue.isEmpty,
             let passwordValue = self.txtPassword.text where !passwordValue.isEmpty else {
             UIAlertView(title: "Missing Required Fields",
                         message: "Username / Password are required for registration.",
