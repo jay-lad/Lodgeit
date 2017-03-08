@@ -87,7 +87,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             {
                 let msg = message.first?.body
                 self.lastmessage.removeAll()
-                self.lastmessage.append(msg!)
+//                self.lastmessage.append(msg!)
                 self.tblChannel.reloadData()
             }
         })
