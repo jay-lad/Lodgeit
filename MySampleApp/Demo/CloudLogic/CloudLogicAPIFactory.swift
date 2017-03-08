@@ -22,7 +22,7 @@ class CloudLogicAPIFactory {
                 apiDescription: "",
                 paths: [
                  "/token", "/token/123",                ],
-                endPoint: "https://sqof6eikkl.execute-api.us-east-1.amazonaws.com/Development",
+                endPoint: "https://big2n6ay7g.execute-api.us-east-1.amazonaws.com/acs/token",
                 apiClient: AWSAPI_SQOF6EIKKL_GetTwilioTokenMobileHubClient.init(forKey: AWSCloudLogicDefaultConfigurationKey)
             ),
         ]

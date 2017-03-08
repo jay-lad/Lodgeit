@@ -11,3 +11,5 @@
 //
 
 #import "AWSAPI_SQOF6EIKKL_GetTwilioTokenMobileHubClient.h"
+#import "AWSApiGatewayBridge.h"
+#import <CommonCrypto/CommonCrypto.h>

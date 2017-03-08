@@ -89,6 +89,8 @@ extension SignInViewController: AWSCognitoUserPoolsSignInHandler {
                 return
         }
         // set the task completion result as an object of AWSCognitoIdentityPasswordAuthenticationDetails with username and password that the app user provides
-        self.passwordAuthenticationCompletion?.setResult(AWSCognitoIdentityPasswordAuthenticationDetails(username: username, password: password))
+        self.passwordAuthenticationCompletion?.setResult(AWSCognitoIdentityPasswordAuthenticationDetails(username: username.md5, password: password))
+        NSUserDefaults.standardUserDefaults().setObject(username, forKey: "Username")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 }

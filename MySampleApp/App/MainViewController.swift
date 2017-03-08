@@ -13,18 +13,38 @@
 
 import UIKit
 import AWSMobileHubHelper
+import AWSAPIGateway
+import TwilioChatClient
+import TwilioAccessManager
 
-class MainViewController: UIViewController {
-    
-//    var demoFeatures: [DemoFeature] = []
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var signInObserver: AnyObject!
     var signOutObserver: AnyObject!
     var willEnterForegroundObserver: AnyObject!
     
+    var twlclient: TwilioChatClient? = nil
+    var generalChannel: TCHChannel? = nil
+    var messages: [TCHMessage] = []
+    var allchannels:[TCHChannel] = []
+    var allUser:[String] = []
+    var lastmessage:[String] = []
+    var channels:NSMutableOrderedSet!
+
+    
+    
     // MARK: - View lifecycle
     
+    @IBOutlet var txtMessage: UITextView!
+    @IBOutlet weak var btnSend: UIButton!
+    @IBOutlet weak var btnAddChannel: UIBarButtonItem!
+
+//var chatview = MessageVC()
+    
+    @IBOutlet weak var tblChannel: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.tblChannel.registerClass(cellConversation.self, forCellReuseIdentifier: "conversationcell")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
         
         // You need to call `- updateTheme` here in case the sign-in happens before `- viewWillAppear:` is called.
@@ -32,47 +52,62 @@ class MainViewController: UIViewController {
         willEnterForegroundObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationWillEnterForegroundNotification, object: nil, queue: NSOperationQueue.currentQueue()) { _ in
             self.updateTheme()
         }
-
-            presentSignInViewController()
         
-            signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
-                        guard let strongSelf = self else { return }
-                        print("Sign In Observer observed sign in.")
-                        strongSelf.setupRightBarButtonItem()
-                        // You need to call `updateTheme` here in case the sign-in happens after `- viewWillAppear:` is called.
-                        strongSelf.updateTheme()
-                })
-                
-                signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
-                        guard let strongSelf = self else { return }
-                        print("Sign Out Observer observed sign out.")
-                        strongSelf.setupRightBarButtonItem()
-                        strongSelf.updateTheme()
-                })
-                
-                setupRightBarButtonItem()
+        presentSignInViewController()
+        signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
+            guard let strongSelf = self else { return }
+            print("Sign In Observer observed sign in.")
+            strongSelf.setupRightBarButtonItem()
+            // You need to call `updateTheme` here in case the sign-in happens after `- viewWillAppear:` is called.
+            strongSelf.updateTheme()
+            strongSelf.getToken()
+            })
+        
+        signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
+            guard let strongSelf = self else { return }
+            print("Sign Out Observer observed sign out.")
+            strongSelf.setupRightBarButtonItem()
+            strongSelf.updateTheme()
+            })
+        
+        setupRightBarButtonItem()
     }
+    
+    
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(signInObserver)
         NSNotificationCenter.defaultCenter().removeObserver(signOutObserver)
         NSNotificationCenter.defaultCenter().removeObserver(willEnterForegroundObserver)
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        self.generalChannel?.messages.getLastMessagesWithCount(1, completion: { (result, message) in
+            if result.isSuccessful()
+            {
+                let msg = message.first?.body
+                self.lastmessage.removeAll()
+                self.lastmessage.append(msg!)
+                self.tblChannel.reloadData()
+            }
+        })
+    }
+    
     func setupRightBarButtonItem() {
-            struct Static {
-                static var onceToken: dispatch_once_t = 0
-            }
-            
-            dispatch_once(&Static.onceToken, {
-                let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .Done, target: self, action: nil)
-                self.navigationItem.rightBarButtonItem = loginButton
-            })
-            
-            if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
-                navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
-                navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
-            }
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+        }
+        
+        dispatch_once(&Static.onceToken, {
+            let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .Done, target: self, action: nil)
+            self.navigationItem.rightBarButtonItem = loginButton
+            navigationItem.rightBarButtonItem!.tintColor = UIColor.blackColor()
+        })
+        
+        if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
+            navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
+            navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
+        }
     }
     
     func presentSignInViewController() {
@@ -87,19 +122,149 @@ class MainViewController: UIViewController {
         let settings = ColorThemeSettings.sharedInstance
         settings.loadSettings { (themeSettings: ColorThemeSettings?, error: NSError?) -> Void in
             guard let themeSettings = themeSettings else {
-                 print("Failed to load color: \(error)")
+                print("Failed to load color: \(error)")
                 return
             }
             dispatch_async(dispatch_get_main_queue(), {
                 let titleTextColor: UIColor = themeSettings.theme.titleTextColor.UIColorFromARGB()
+                self.btnAddChannel.tintColor = themeSettings.theme.titleTextColor.UIColorFromARGB()
                 self.navigationController!.navigationBar.barTintColor = themeSettings.theme.titleBarColor.UIColorFromARGB()
                 self.view.backgroundColor = themeSettings.theme.backgroundColor.UIColorFromARGB()
                 self.navigationController!.navigationBar.tintColor = titleTextColor
                 self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: titleTextColor]
+                UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+                self.navigationItem.rightBarButtonItem!.tintColor = themeSettings.theme.backgroundColor.UIColorFromARGB()
             })
         }
     }
     
+    @IBAction func btnAddChannelClick(sender: AnyObject) {
+        self.joinChannelWith("dilip")
+    }
+    
+    @IBAction func btnSendMessage(sender: AnyObject) {
+        
+        
+        if let messages = generalChannel?.messages {
+            let message = messages.createMessageWithBody(self.txtMessage.text!)
+            messages.sendMessage(message, completion: { (result) in
+                if result.isSuccessful() {
+                    print("Message sent.")
+                } else {
+                    print("Message NOT sent.")
+                }
+            })
+            
+        }
+        
+    }
+    
+    func getToken() -> String? {
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSCognitoUserPoolRegion, identityPoolId: "us-east-1:7d68636d-14e4-4f46-92ea-31b5d1cd7946")
+        
+     //   let all = AWSCognitoIdentityListIdentityPoolsResponse
+        let configuration = AWSServiceConfiguration(region: AWSCloudLogicDefaultRegion, credentialsProvider: credentialsProvider)
+        
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+        
+        let body = ACSTokenRequest()
+        body.userid = AWSIdentityManager.defaultIdentityManager().identityId
+        
+        let client = ACSACSApisClient.defaultClient()
+        
+        client.getTokenPost(body).continueWithBlock {(task: AWSTask) -> AnyObject? in
+            if let error = task.error {
+                print("Error occurred: \(error)")
+                return nil
+            }
+            
+            if let result = task.result {
+                // Do something with result
+                print(result)
+                _ = result.token()
+                
+                
+                let property = TwilioChatClientProperties()
+                property.initialMessageCount = 10
+                self.twlclient = TwilioChatClient(token: "\(result.token())", properties: property, delegate: self)
+                // self.getChannel(String(token))
+                
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                print("\(result.valueForKey("username"))")
+                defaults.setObject(result.valueForKey("identity"), forKey: "identity")
+                print(defaults.valueForKey("identity") as? String ??  "")
+                return result.token()
+            
+                
+            }
+            return nil
+        }
+        return nil
+    }
+    
+    
+    
+    
+//    func getToken() -> String? {
+//        
+//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType: AWSCognitoUserPoolRegion, identityPoolId: "us-east-1:7d68636d-14e4-4f46-92ea-31b5d1cd7946")
+//        
+//        let configuration = AWSServiceConfiguration(region: AWSCloudLogicDefaultRegion, credentialsProvider: credentialsProvider)
+//        
+//        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
+//        
+//        let body = ACSTokenRequest()
+//        body.userid = AWSIdentityManager.defaultIdentityManager().userName
+//        print(AWSIdentityManager.defaultIdentityManager().identityId)
+//        let client = ACSACSApisClient.defaultClient()
+//        client.getTokenPost(body).continueWithBlock {(task: AWSTask) -> AnyObject? in
+//            if let error = task.error {
+//                print("Error occurred: \(error)")
+//                return nil
+//            }
+//            
+//            if let result = task.result {
+//                // Do something with result
+//                print(result)
+//                _ = result.token()
+//                let property = TwilioChatClientProperties()
+//                property.initialMessageCount = 10
+//                self.twlclient = TwilioChatClient(token: "\(result.token())", properties: property, delegate: self)
+//               // self.getChannel(String(token))
+//                return result.token()
+//            }
+//            return nil
+//        }
+//        return nil
+//    }
+    
+    func getChannel(token: String) {
+        
+        let options = [
+            TCHChannelOptionFriendlyName: "General Channel",
+            TCHChannelOptionType: TCHChannelType.Public.rawValue
+        ] as [NSObject : AnyObject]
+        self.twlclient?.channelsList().createChannelWithOptions(options) { (result, channel) in
+            if (result.isSuccessful()) {
+                print("Channel created.")
+            } else {
+                print("Channel NOT created.")
+            }
+        }
+//        self.twlclient!.channelsList().createChannelWithOptions(options, completion: {
+//            channelResult, channel in
+//            if (channelResult?.isSuccessful())! {
+//                print("Channel created.")
+//            } else {
+//                print("Channel NOT created.")
+//            }
+//        })
+
+        
+        
+    }
     
     func handleLogout() {
         if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
@@ -107,18 +272,222 @@ class MainViewController: UIViewController {
             AWSIdentityManager.defaultIdentityManager().logoutWithCompletionHandler({(result: AnyObject?, error: NSError?) -> Void in
                 self.navigationController!.popToRootViewControllerAnimated(false)
                 self.setupRightBarButtonItem()
-                    self.presentSignInViewController()
+                self.presentSignInViewController()
             })
             // print("Logout Successful: \(signInProvider.getDisplayName)");
         } else {
             assert(false)
         }
     }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.allUser.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("conversationcell", forIndexPath: indexPath) as! cellConversation
+       // let channel = self.allchannels[indexPath.row]
+       // cell.lblUsername!.text = self.allUser[indexPath.row]
+        cell.lblUsername!.text = self.allUser[indexPath.row]
+//        channel.getMessagesCountWithCompletion { (result, count) in
+//            if result.isSuccessful(){
+//            if count != 0
+//            {
+//                channel.messages.getLastMessagesWithCount(1, completion: { (result, messagelast) in
+//                    if result.isSuccessful()
+//                    {
+//                        cell.lblLastMessage.text = messagelast.last?.body
+//                    }
+//                })
+//            }
+//            }
+//        }
+       
+        return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.generalChannel?.joinWithCompletion({ (result) in
+            
+        })
+        let chatview = self.storyboard?.instantiateViewControllerWithIdentifier("MessageVC") as! MessageVC
+        chatview.currentchannelname = self.allUser[indexPath.row]
+        chatview.generalChannel = self.allchannels[indexPath.row]
+        chatview.twlclient = self.twlclient
+        self.navigationController?.pushViewController(chatview, animated: true)
+    }
+    
+    
+    func removeDuplicates(array: [String]) -> [String] {
+        var encountered = Set<String>()
+        var result: [String] = []
+        for value in array {
+            if encountered.contains(value) {
+                // Do not add a duplicate element.
+            }
+            else {
+                // Add value to the set.
+                encountered.insert(value)
+                // ... Append the value.
+                result.append(value)
+            }
+        }
+        return result
+    }
+    
+    func refresh() {
+       // TCHChannels
+    //let allchannels = self.twlclient?.channelsList()
+        self.twlclient?.channelsList().userChannelsWithCompletion({ (result, paginator) in
+            let newchannels = NSMutableOrderedSet()
+            newchannels.addObjectsFromArray(paginator.items())
+            self.channels = newchannels
+            
+        })
+    }
+    
+    func joinChannelWith(name:String)
+    {
+        let options = [
+            TCHChannelOptionFriendlyName: name,
+            TCHChannelOptionType: TCHChannelType.Private.rawValue
+        ] as [NSObject : AnyObject]
+        self.twlclient?.channelsList().createChannelWithOptions(options, completion: { (result, channel) in
+            
+            if result.isSuccessful()
+            {
+                    self.generalChannel = channel
+            }
+            
+            
+        })
+        
+    }
+    
+}
+
+
+
+
+extension MainViewController: TwilioChatClientDelegate {
+
+    
+    
+    func chatClient(client: TwilioChatClient!, synchronizationStatusChanged status: TCHClientSynchronizationStatus) {
+       // if self.twlclient?.connectionState == .Disconnected || self.twlclient?.connectionState == .None || self.twlclient?.connectionState == .Unknown {
+        if status == .Completed {
+            // Join (or create) the general channel
+            let defaultChannel = "general"
+            client.channelsList().channelWithSidOrUniqueName(defaultChannel, completion: { (result, channel) in
+                if let channel = channel {
+                    self.generalChannel = channel
+                    self.allchannels.append(channel)
+                    channel.joinWithCompletion({ result in
+                        let username = NSUserDefaults.standardUserDefaults().valueForKey("username") as? String ?? "Unknown"
+                        self.twlclient!.userInfo.setFriendlyName(username, completion: { (result) in
+                            if result.isSuccessful(){
+                                print("success")
+                            }
+                        })
+                        
+                        let channels: TCHChannels? = self.twlclient!.channelsList()
+                        if let chals = channels {
+                            chals.publicChannelsWithCompletion({ (result, page) in
+                                if result.isSuccessful()
+                                {
+                                    self.allUser.removeAll()
+                                    for channel in  page.items()
+                                    {
+                                            self.allUser.append(channel.friendlyName)
+                                        
+                                    }
+                                }
+                              //  self.allUser = self.removeDuplicates(self.allUser)
+                                self.tblChannel.reloadData()
+                            })
+                            self.generalChannel?.messages.getLastMessagesWithCount(1, completion: { (result, message) in
+                                if result.isSuccessful()
+                                {
+                                    let msg = message.first?.body
+                                    self.lastmessage.append(msg!)
+                                    self.tblChannel.reloadData()
+                                }
+                            })
+                            
+                            
+//                            chals.userChannelsWithCompletion({ (result, page) in
+//                                if result.isSuccessful()
+//                                {
+//                                    print(page.items())
+//                                    for channel in  page.items()
+//                                    {
+//                                        self.allUser.append(channel.friendlyName)
+//                                        self.tblChannel.reloadData()
+//                                    }
+//                                }
+//                            })
+                            
+                            // Get a specific channel by unique name
+                            
+                        }
+                        
+                    })
+                } else {
+                    // Create the general channel (for public use) if it hasn't been created yet
+                    client.channelsList().createChannelWithOptions([TCHChannelOptionFriendlyName: "General Chat Channel", TCHChannelOptionType: TCHChannelType.Public.rawValue], completion: { (result, channel) -> Void in
+                        if result.isSuccessful() {
+                            self.generalChannel = channel
+                            self.generalChannel?.joinWithCompletion({ result in
+                                self.generalChannel?.setUniqueName(defaultChannel, completion: { result in
+                                    print("channel unique name set")
+                                })
+                            })
+                        }
+                    })
+                }
+            })
+        }
+        
+    }
+    
+    func chatClient(client: TwilioChatClient!, channelAdded channel: TCHChannel!) {
+        print(channel)
+        self.allchannels.append(channel)
+        self.allUser.append(channel.friendlyName)
+        self.tblChannel.reloadData()
+    }
+    
+    func chatClient(client: TwilioChatClient!, errorReceived error: TCHError!) {
+        print(error.description)
+    }
+    
+    func chatClient(client: TwilioChatClient!, userInfo: TCHUserInfo!, updated: TCHUserInfoUpdate) {
+        print(userInfo)
+        print(updated)
+    }
+    
+    func chatClient(client: TwilioChatClient!, channel: TCHChannel!, messageChanged message: TCHMessage!) {
+        print(message)
+    }
+    
+    func chatClient(client: TwilioChatClient!, channel: TCHChannel!, memberJoined member: TCHMember!) {
+        print(member)
+    }
+    
+    func chatClient(client: TwilioChatClient!, typingStartedOnChannel channel: TCHChannel!, member: TCHMember!) {
+        
+    }
+    
+    
+    
 }
 
 class FeatureDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "Back", style: .Plain, target: nil, action: nil)
+        
     }
 }
